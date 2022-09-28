@@ -35,21 +35,16 @@ ChartJS.register(
 const App = () => {
   return (
     <div className={styles.app}>
+      <h1>Chart.js Example</h1>
       <div className={styles.horizontalBarChart}>
-        <div>
-          <HorizontalBarChartWithSLA />
-        </div>
-        <div>
-          <HorizontalBarChartWithSLA />
-        </div>
-        <div>
-          <HorizontalBarChartWithSLA />
-        </div>
-        <div>
-          <HorizontalBarChartWithSLA />
-        </div>
+        <HorizontalBarChartWithSLA />
+        <HorizontalBarChartWithSLA />
+        <HorizontalBarChartWithSLA />
+        <HorizontalBarChartWithSLA />
       </div>
-      <AverageWaitingTimeGraph />
+      <div className={styles.averageWaitingTimeGraph}>
+        <AverageWaitingTimeGraph />
+      </div>
     </div>
   );
 };

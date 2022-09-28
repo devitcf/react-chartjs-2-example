@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+h1 {
+  text-align: start;
+}
+
 .horizontalBarChart {
   height: 400px;
   display: flex;
@@ -13,5 +17,12 @@
 
   div {
     width: 25%;
+  }
+}
+
+.averageWaitingTimeGraph {
+  margin-top: 50px;
+  div {
+    height: 200px;
   }
 }

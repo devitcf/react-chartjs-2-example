@@ -70,7 +70,7 @@ interface DataWithStyle {
 }
 
 const options: ChartOptions = {
-  maintainAspectRatio: true,
+  maintainAspectRatio: false,
   elements: {
     line: {
       tension: 0.4, // 0.4 for Curve effect, 0 for straight line
@@ -134,7 +134,11 @@ const options: ChartOptions = {
 };
 
 const AverageWaitingTimeGraph = () => {
-  return <Chart type="bar" data={data} options={options} />;
+  return (
+    <div>
+      <Chart type="bar" data={data} options={options} />
+    </div>
+  );
 };
 
 export default AverageWaitingTimeGraph;

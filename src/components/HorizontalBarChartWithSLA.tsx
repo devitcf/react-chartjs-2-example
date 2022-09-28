@@ -68,7 +68,11 @@ const options: ChartOptions<"bar"> = {
 };
 
 const HorizontalBarChartWithSLA = () => {
-  return <Bar data={data} options={options} />;
+  return (
+    <div>
+      <Bar data={data} options={options} />
+    </div>
+  );
 };
 
 export default HorizontalBarChartWithSLA;
