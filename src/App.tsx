@@ -35,7 +35,7 @@ ChartJS.register(
 const App = () => {
   return (
     <div className={styles.app}>
-      <h1>Chart.js Example</h1>
+      <h1>React-chartjs-2 Example</h1>
       <div className={styles.horizontalBarChart}>
         <HorizontalBarChartWithSLA />
         <HorizontalBarChartWithSLA />
