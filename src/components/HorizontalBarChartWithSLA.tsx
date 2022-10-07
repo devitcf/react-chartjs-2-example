@@ -1,16 +1,30 @@
 import faker from "faker";
-import type { ChartData, ChartOptions } from "chart.js";
+import type { ChartArea, ChartData, ChartOptions } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
 const SLA = 10;
 const branches = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"];
+
+const getGradient = (ctx: CanvasRenderingContext2D, chartArea: ChartArea, overSLA = false) => {
+  const gradientRed = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
+  const gradientBlue = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
+  gradientRed.addColorStop(0, "rgb(251, 130, 81)");
+  gradientRed.addColorStop(1, "rgb(251, 83, 81)");
+  gradientBlue.addColorStop(0, "rgb(80, 216, 251)");
+  gradientBlue.addColorStop(1, "rgb(77, 92, 225)");
+  return overSLA ? gradientRed : gradientBlue;
+};
 
 const data: ChartData<"bar"> = {
   labels: branches,
   datasets: [
     {
       data: branches.map(() => faker.datatype.number({ min: 3, max: 12 })),
-      backgroundColor: (ctx) => ((ctx.raw as number) > SLA ? "rgb(222, 20, 0)" : "rgb(124, 222, 13)"),
+      backgroundColor: (context) => {
+        const chart = context.chart;
+        const { ctx, chartArea } = chart;
+        if (chartArea) return getGradient(ctx, chartArea, (context.raw as number) > SLA);
+      },
     },
   ],
 };
